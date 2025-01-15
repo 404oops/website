@@ -3,6 +3,8 @@ import {
   faGithub,
   faXTwitter,
   faSoundcloud,
+  faBandcamp,
+  faPatreon
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -18,6 +20,16 @@ const socialLinks: SocialLink[] = [
     icon: faGithub,
     href: "https://github.com/404oops",
     label: "GitHub",
+  },
+  {
+    icon: faPatreon,
+    href: "https://patreon.com/c/404oops",
+    label: "Patreon"
+  },
+  {
+    icon: faBandcamp,
+    href: "https://404oops.bandcamp.com/",
+    label: "Bandcamp"
   },
   {
     icon: faXTwitter,
