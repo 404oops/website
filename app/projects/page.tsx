@@ -9,6 +9,13 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    title: "GRIT",
+    description:
+      "MEMENTO PARVITATEM TUAM - 'Remember your smallness' alludes to the fact that we are all people no matter what we do or how big we think we are.",
+    href: "https://song.link/404oops-grit",
+    image: "/covers/gritcover.png",
+  },
+  {
     title: "RADIOACTIVE",
     description:
       "An experimental A/B featuring a track that I had fun with making during a voice chat session",

@@ -28,6 +28,8 @@ export default function ProjectCard({
             <Image
               src={image}
               alt={title}
+              width={96}
+              height={96}
               className="w-24 h-24 object-cover rounded-md"
             />
           </div>
