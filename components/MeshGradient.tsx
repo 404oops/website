@@ -2,6 +2,15 @@
 
 import React, { useRef, useEffect } from "react";
 
+type Point = {
+  x: number;
+  y: number;
+  color: string;
+  radius: number;
+  dx: number;
+  dy: number;
+};
+
 export default function MeshGradient() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -17,8 +26,8 @@ export default function MeshGradient() {
       canvas.height = window.innerHeight;
     };
 
-    const generatePoints = (count: number) => {
-      const points = [];
+    const generatePoints = (count: number): Point[] => {
+      const points: Point[] = [];
       for (let i = 0; i < count; i++) {
         points.push({
           x: Math.random() * canvas.width,
@@ -32,7 +41,7 @@ export default function MeshGradient() {
       return points;
     };
 
-    const animatePoints = (points: any[]) => {
+    const animatePoints = (points: Point[]) => {
       points.forEach((point) => {
         point.x += point.dx;
         point.y += point.dy;
@@ -43,7 +52,7 @@ export default function MeshGradient() {
       });
     };
 
-    const renderGradient = (points: any[]) => {
+    const renderGradient = (points: Point[]) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       points.forEach((point) => {
