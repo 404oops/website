@@ -8,12 +8,12 @@ export default function Home() {
       <div className="px-4 sm:px-6 lg:px-8 w-full max-w-screen-lg mx-auto">
         <Link href="/projects">
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             alt="Logo"
-            width={2000}
-            height={2000}
+            width={1000}
+            height={1000}
             priority
-            className="w-auto h-auto max-h-[90%] min-h-0 mx-auto p-20vw"
+            className="max-h-[90vh] mx-auto p-30vw invert"
           />
         </Link>
       </div>
