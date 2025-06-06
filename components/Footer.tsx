@@ -4,7 +4,9 @@ import {
   faXTwitter,
   faSoundcloud,
   faBandcamp,
-  faPatreon
+  faPatreon,
+  faBluesky,
+  faThreads,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -24,17 +26,27 @@ const socialLinks: SocialLink[] = [
   {
     icon: faPatreon,
     href: "https://patreon.com/c/404oops",
-    label: "Patreon"
+    label: "Patreon",
   },
   {
     icon: faBandcamp,
     href: "https://404oops.bandcamp.com/",
-    label: "Bandcamp"
+    label: "Bandcamp",
   },
   {
     icon: faXTwitter,
     href: "https://twitter.com/oops4041555",
     label: "X",
+  },
+  {
+    icon: faThreads,
+    href: "https://www.threads.net/@oops4041555",
+    label: "Threads",
+  },
+  {
+    icon: faBluesky,
+    href: "https://bsky.app/profile/404oops.com",
+    label: "Bluesky",
   },
   {
     icon: faSoundcloud,
