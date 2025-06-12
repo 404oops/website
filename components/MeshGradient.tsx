@@ -32,7 +32,7 @@ export default function MeshGradient() {
         points.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          color: `rgba(${Math.floor(Math.random() * 256)}, 0, 0, 0.2)`, // Dark red shades
+          color: `rgba(${Math.floor(Math.random() * 256)}, 0, 0, 0.5)`, // Dark red shades
           radius: Math.random() * 400 + 300, // Increased radius: 400 to 900
           dx: Math.random() * 2 - 1, // Random x-direction speed
           dy: Math.random() * 2 - 1, // Random y-direction speed
@@ -75,7 +75,7 @@ export default function MeshGradient() {
     };
 
     const animateGradient = () => {
-      const points = generatePoints(9);
+      const points = generatePoints(13);
 
       const render = () => {
         animatePoints(points);
@@ -86,20 +86,72 @@ export default function MeshGradient() {
       render();
     };
 
+    const drawBlurredGradient = (canvas: HTMLCanvasElement) => {
+      const visibleWidth = window.innerWidth;
+      const visibleHeight = window.innerHeight;
+      const padding = 40; // Extra space for blur
+
+      // Create offscreen canvas
+      const offCanvas = document.createElement("canvas");
+      offCanvas.width = visibleWidth + padding * 2;
+      offCanvas.height = visibleHeight + padding * 2;
+      const offCtx = offCanvas.getContext("2d");
+
+      if (!offCtx) return;
+      // Draw gradient on offscreen canvas
+      const gradient = offCtx.createLinearGradient(
+        padding,
+        padding,
+        offCanvas.width - padding,
+        offCanvas.height - padding
+      );
+      gradient.addColorStop(0, "rgba(255, 0, 150, 0.6)");
+      gradient.addColorStop(1, "rgba(0, 204, 255, 0.6)");
+      offCtx.fillStyle = gradient;
+      offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
+
+      // Apply blur
+      offCtx.globalAlpha = 1;
+      offCtx.filter = "blur(16px)";
+      offCtx.drawImage(offCanvas, 0, 0);
+
+      // Draw the center (cropped) part onto the visible canvas
+      canvas.width = visibleWidth;
+      canvas.height = visibleHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.clearRect(0, 0, visibleWidth, visibleHeight);
+      ctx.drawImage(
+        offCanvas,
+        padding,
+        padding,
+        visibleWidth,
+        visibleHeight, // source rect
+        0,
+        0,
+        visibleWidth,
+        visibleHeight // destination rect
+      );
+    };
+
     resizeCanvas();
     animateGradient();
 
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", () => {
+      drawBlurredGradient(canvas);
+    });
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", () => {
+        drawBlurredGradient(canvas);
+      });
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-20 fade-in"
+      className="fixed inset-0 w-full h-full -z-20 fade-in blur-xl"
     />
   );
 }
