@@ -6,7 +6,6 @@ import {
   faBandcamp,
   faPatreon,
   faBluesky,
-  faThreads,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -37,11 +36,6 @@ const socialLinks: SocialLink[] = [
     icon: faXTwitter,
     href: "https://twitter.com/oops4041555",
     label: "X",
-  },
-  {
-    icon: faThreads,
-    href: "https://www.threads.net/@oops4041555",
-    label: "Threads",
   },
   {
     icon: faBluesky,
