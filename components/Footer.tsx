@@ -6,6 +6,7 @@ import {
   faBandcamp,
   faPatreon,
   faBluesky,
+  faWordpress,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -38,11 +39,6 @@ const socialLinks: SocialLink[] = [
     label: "X",
   },
   {
-    icon: faBluesky,
-    href: "https://bsky.app/profile/404oops.com",
-    label: "Bluesky",
-  },
-  {
     icon: faSoundcloud,
     href: "https://soundcloud.com/404oops",
     label: "SoundCloud",
@@ -52,6 +48,11 @@ const socialLinks: SocialLink[] = [
     href: "mailto:me@404oops.com",
     label: "Email",
   },
+  {
+    icon: faWordpress,
+    href: "https://blog.404oops.com",
+    label: "Blog",
+  }
 ];
 
 export default function Footer() {

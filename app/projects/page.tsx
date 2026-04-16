@@ -9,30 +9,43 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    title: "Tesla ($20)",
+    description: "An audio recorder, similar to Image-Line's Edison, that costs a quarter of the price and works on every DAW. Made with JUCE.",
+    href: "https://www.patreon.com/posts/tesla-151193557",
+    image: "/covers/tesla.png",
+  },
+  {
+    title: "Audinspect",
+    description:
+      "A simple audio inspector, made for quick viewing and listening of audio files. Built with Electron + React and wavesurfer.js.",
+    href: "https://github.com/404oops/audinspect",
+    image: "/covers/audinspect.png",
+  },
+  {
     title: "GRIT",
     description:
-      "MEMENTO PARVITATEM TUAM - 'Remember your smallness' alludes to the fact that we are all people no matter what we do or how big we think we are.",
+      "MEMENTO PARVITATEM TUAM - 'Remember your smallness' alludes to the fact that we are all people no matter what we do or how big we think we are.. A dubstep track that fuses 2 DAWs and contains sound design from Hardcore.",
     href: "https://song.link/404oops-grit",
     image: "/covers/gritcover.png",
   },
   {
     title: "RADIOACTIVE",
     description:
-      "An experimental A/B featuring a track that I had fun with making during a voice chat session",
+      "An experimental A/B single featuring a Euphoric Hardstyle track that I had fun with making during a voice chat session.",
     href: "https://album.link/radioactive",
     image: "/covers/radioactivecover.jpg",
   },
   {
     title: "SEEZAAG (THE FINAL CUT)",
     description:
-      "A rework of gZIP's most famous song, SEEZAAG, featuring a better fusion between Uptempo Hardcore and Dubstep and interesting parts",
+      "A rework of gZIP's most famous song, SEEZAAG, featuring a better fusion between Uptempo Hardcore and Dubstep and interesting parts.",
     href: "https://song.link/seezaag-the-final-cut",
     image: "/covers/tfccover.jpg",
   },
   {
     title: "gZIP",
     description:
-      "A 6-track EP featuring a fusion between Hardcore and Dubstep and a Hardbass track",
+      "A 6-track EP featuring a fusion between Hardcore and Dubstep and a Hardbass track. ",
     href: "https://album.link/gZIP",
     image: "/covers/gzipcover.jpg",
   },
