@@ -23,7 +23,7 @@ export default function ProjectCard({
       <div className="flex gap-4 items-center min-h-full">
         <div onClick={copyAddress} className="cursor-pointer">
           <h2 className="text-xl font-bold mb-2">{title}</h2>
-          <p className="text-gray-300 font-mono break-all [overflow-wrap:anywhere]">
+          <p className="normal-case text-gray-300 font-mono break-all [overflow-wrap:anywhere]">
             {address}
           </p>
         </div>
