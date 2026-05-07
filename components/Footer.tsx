@@ -14,6 +14,7 @@ interface SocialLink {
   icon: IconDefinition;
   href: string;
   label: string;
+  newTab?: boolean;
 }
 
 const socialLinks: SocialLink[] = [
@@ -21,26 +22,31 @@ const socialLinks: SocialLink[] = [
     icon: faGithub,
     href: "https://github.com/404oops",
     label: "GitHub",
+    newTab: true,
   },
   {
     icon: faPatreon,
     href: "https://patreon.com/c/404oops",
     label: "Patreon",
+    newTab: true,
   },
   {
     icon: faBandcamp,
     href: "https://404oops.bandcamp.com/",
     label: "Bandcamp",
+    newTab: true,
   },
   {
     icon: faXTwitter,
     href: "https://twitter.com/oops4041555",
     label: "X",
+    newTab: true,
   },
   {
     icon: faSoundcloud,
     href: "https://soundcloud.com/404oops",
     label: "SoundCloud",
+    newTab: true,
   },
   {
     icon: faEnvelope,
@@ -67,8 +73,9 @@ export default function Footer() {
           <a
             key={link.label}
             href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(link.newTab
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="text-gray-400 hover:text-white transition-colors duration-200 p-3 rounded-full hover:bg-white/5"
             aria-label={link.label}
           >
