@@ -7,7 +7,7 @@ import {
   faPatreon,
   faWordpress,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faDollarSign, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface SocialLink {
@@ -51,6 +51,11 @@ const socialLinks: SocialLink[] = [
     icon: faWordpress,
     href: "https://blog.404oops.com",
     label: "Blog",
+  },
+  {
+    icon: faDollarSign,
+    href: "/wallets",
+    label: "Crypto",
   }
 ];
 
