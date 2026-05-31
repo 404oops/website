@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import SpaceGradient from "@/components/SpaceGradient";
 
 type Point = {
   x: number;
@@ -11,8 +12,9 @@ type Point = {
   dy: number;
 };
 
-export default function MeshGradient() {
+function MeshField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const OVERDRAW = 128;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -22,20 +24,44 @@ export default function MeshGradient() {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth + OVERDRAW * 2;
+      canvas.height = window.innerHeight + OVERDRAW * 2;
+    };
+
+    const scalePointsToCanvas = (
+      points: Point[],
+      previousWidth: number,
+      previousHeight: number
+    ) => {
+      const widthScale = canvas.width / previousWidth;
+      const heightScale = canvas.height / previousHeight;
+
+      return points.map((point) => ({
+        ...point,
+        x: point.x * widthScale,
+        y: point.y * heightScale,
+        radius: point.radius,
+      }));
     };
 
     const generatePoints = (count: number): Point[] => {
       const points: Point[] = [];
       for (let i = 0; i < count; i++) {
+        const palette = [
+          "rgba(28, 0, 0, 0.98)",
+          "rgba(42, 0, 0, 0.97)",
+          "rgba(58, 2, 2, 0.95)",
+          "rgba(78, 4, 4, 0.93)",
+          "rgba(104, 10, 10, 0.9)",
+        ];
+
         points.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          color: `rgba(${Math.floor(Math.random() * 256)}, 0, 0, 0.5)`, // Dark red shades
-          radius: Math.random() * 400 + 300, // Increased radius: 400 to 900
-          dx: Math.random() * 2 - 1, // Random x-direction speed
-          dy: Math.random() * 2 - 1, // Random y-direction speed
+          color: palette[Math.floor(Math.random() * palette.length)],
+          radius: Math.random() * 260 + 280,
+          dx: Math.random() * 2 - 1,
+          dy: Math.random() * 2 - 1,
         });
       }
       return points;
@@ -46,7 +72,6 @@ export default function MeshGradient() {
         point.x += point.dx;
         point.y += point.dy;
 
-        // Bounce off edges
         if (point.x < 0 || point.x > canvas.width) point.dx *= -1;
         if (point.y < 0 || point.y > canvas.height) point.dy *= -1;
       });
@@ -54,6 +79,7 @@ export default function MeshGradient() {
 
     const renderGradient = (points: Point[]) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "lighter";
 
       points.forEach((point) => {
         const gradient = ctx.createRadialGradient(
@@ -72,86 +98,52 @@ export default function MeshGradient() {
         ctx.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
         ctx.fill();
       });
-    };
 
-    const animateGradient = () => {
-      const points = generatePoints(13);
-
-      const render = () => {
-        animatePoints(points);
-        renderGradient(points);
-        requestAnimationFrame(render);
-      };
-
-      render();
-    };
-
-    const drawBlurredGradient = (canvas: HTMLCanvasElement) => {
-      const visibleWidth = window.innerWidth;
-      const visibleHeight = window.innerHeight;
-      const padding = 40; // Extra space for blur
-
-      // Create offscreen canvas
-      const offCanvas = document.createElement("canvas");
-      offCanvas.width = visibleWidth + padding * 2;
-      offCanvas.height = visibleHeight + padding * 2;
-      const offCtx = offCanvas.getContext("2d");
-
-      if (!offCtx) return;
-      // Draw gradient on offscreen canvas
-      const gradient = offCtx.createLinearGradient(
-        padding,
-        padding,
-        offCanvas.width - padding,
-        offCanvas.height - padding
-      );
-      gradient.addColorStop(0, "rgba(255, 0, 150, 0.6)");
-      gradient.addColorStop(1, "rgba(0, 204, 255, 0.6)");
-      offCtx.fillStyle = gradient;
-      offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
-
-      // Apply blur
-      offCtx.globalAlpha = 1;
-      offCtx.filter = "blur(16px)";
-      offCtx.drawImage(offCanvas, 0, 0);
-
-      // Draw the center (cropped) part onto the visible canvas
-      canvas.width = visibleWidth;
-      canvas.height = visibleHeight;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-      ctx.clearRect(0, 0, visibleWidth, visibleHeight);
-      ctx.drawImage(
-        offCanvas,
-        padding,
-        padding,
-        visibleWidth,
-        visibleHeight, // source rect
-        0,
-        0,
-        visibleWidth,
-        visibleHeight // destination rect
-      );
+      ctx.globalCompositeOperation = "source-over";
     };
 
     resizeCanvas();
-    animateGradient();
+    let points = generatePoints(22);
+    let animationFrameId = 0;
+    let resizeFrameId = 0;
 
-    window.addEventListener("resize", () => {
-      drawBlurredGradient(canvas);
-    });
+    const render = () => {
+      animatePoints(points);
+      renderGradient(points);
+      animationFrameId = window.requestAnimationFrame(render);
+    };
+
+    const handleResize = () => {
+      window.cancelAnimationFrame(resizeFrameId);
+      const previousWidth = canvas.width || 1;
+      const previousHeight = canvas.height || 1;
+
+      resizeFrameId = window.requestAnimationFrame(() => {
+        resizeCanvas();
+        points = scalePointsToCanvas(points, previousWidth, previousHeight);
+        renderGradient(points);
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    render();
 
     return () => {
-      window.removeEventListener("resize", () => {
-        drawBlurredGradient(canvas);
-      });
+      window.removeEventListener("resize", handleResize);
+      window.cancelAnimationFrame(animationFrameId);
+      window.cancelAnimationFrame(resizeFrameId);
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-20 fade-in blur-xl"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed -inset-32 -z-20 fade-in blur-xl" />;
+}
+
+export default function MeshGradient() {
+  const [variant, setVariant] = useState<"mesh" | "space">("mesh");
+
+  useEffect(() => {
+    setVariant(Math.random() < 0.2 ? "space" : "mesh");
+  }, []);
+
+  return variant === "space" ? <SpaceGradient /> : <MeshField />;
 }

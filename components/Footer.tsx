@@ -67,7 +67,7 @@ const socialLinks: SocialLink[] = [
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full p-4">
+    <footer className="fixed bottom-0 w-full p-4 z-30">
       <div className="flex flex-wrap justify-center space-x-1">
         {socialLinks.map((link) => (
           <a
