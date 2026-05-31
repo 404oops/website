@@ -44,7 +44,7 @@ export default function SpaceGradient() {
 
       ctx.globalCompositeOperation = "lighter";
 
-      stars.forEach((star, index) => {
+      stars.forEach((star) => {
         const offsetX = star.baseX - state.x;
         const offsetY = star.baseY - state.y;
         const distance = Math.max(1, Math.hypot(offsetX, offsetY));

@@ -43,6 +43,8 @@ export default function CursorStars() {
     };
 
     const drawStar = (x: number, y: number, size: number, glow: number, twinkle: number) => {
+      const twinkleBoost = 0.85 + twinkle * 0.15;
+
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(Math.PI / 4);
@@ -56,9 +58,9 @@ export default function CursorStars() {
       ctx.lineTo(-size * 1.4, 0);
       ctx.lineTo(-size * 0.45, -size * 0.45);
       ctx.closePath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${glow})`;
-      ctx.shadowBlur = size * 8;
-      ctx.shadowColor = `rgba(255, 255, 255, ${glow})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${glow * twinkleBoost})`;
+      ctx.shadowBlur = size * 8 * twinkleBoost;
+      ctx.shadowColor = `rgba(255, 255, 255, ${glow * twinkleBoost})`;
       ctx.fill();
       ctx.restore();
     };
