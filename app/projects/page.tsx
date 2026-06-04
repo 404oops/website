@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const projects = [
   {
     title: `ESPWR`,
-    description: `An ecosystem made with an ESP32 that can remotely power your computer on and off, and also features a web interface and watchdog software can automatically power cycle your computer if it becomes unresponsive. Made in C and `,
+    description: `An ecosystem made with an ESP32 that can remotely power your computer on and off, and also features a web interface and watchdog software can automatically power cycle your computer if it becomes unresponsive. Made in C and Bootstrap 2`,
     href: `https://github.com/404oops/ESPWR`,
     newTab: true,
   },
