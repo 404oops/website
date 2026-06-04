@@ -1,72 +1,62 @@
-import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
-import Link from "next/link";
+import type { Metadata } from 'next';
+import ProjectCard from '@/components/ProjectCard';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Projects | 404oops",
-  description: "My projects and work.",
+  title: `Projects | 404oops`,
+  description: `My projects and work.`,
 };
 
 const projects = [
   {
-    title: "Tesla ($20)",
-    description: "An audio recorder, similar to Image-Line's Edison, that costs a quarter of the price and works on every DAW. Made with JUCE.",
-    href: "https://www.patreon.com/posts/tesla-151193557",
-    image: "/covers/tesla.png",
+    title: `ESPWR`,
+    description: `An ecosystem made with an ESP32 that can remotely power your computer on and off, and also features a web interface and watchdog software can automatically power cycle your computer if it becomes unresponsive. Made in C and `,
+    href: `https://github.com/404oops/ESPWR`,
+    newTab: true,
   },
   {
-    title: "Audinspect",
-    description:
-      "A simple audio inspector, made for quick viewing and listening of audio files. Built with Electron + React and wavesurfer.js.",
-    href: "https://github.com/404oops/audinspect",
-    image: "/covers/audinspect.png",
+    title: `RPiRCM`,
+    description: `A tool for booting hekate on Nintendo Switches from Raspberry Pi devices. Made with GitHub Actions and rpi-image-gen.`,
+    href: `https://github.com/404oops/RPiRCM`,
+    newTab: true,
   },
   {
-    title: "GRIT",
-    description:
-      "MEMENTO PARVITATEM TUAM - 'Remember your smallness' alludes to the fact that we are all people no matter what we do or how big we think we are.. A dubstep track that fuses 2 DAWs and contains sound design from Hardcore.",
-    href: "https://song.link/404oops-grit",
-    image: "/covers/gritcover.png",
+    title: `virt-manager-web`,
+    description: `A dockerized web interface for managing virtual machines, made from a base GUI template. Useful for managing VMs on headless servers. Built with GitHub Actions and jlesage/baseimage-gui`,
+    href: `https://github.com/404oops/virt-manager-web`,
+    newTab: true,
   },
   {
-    title: "RADIOACTIVE",
-    description:
-      "An experimental A/B single featuring a Euphoric Hardstyle track that I had fun with making during a voice chat session.",
-    href: "https://album.link/radioactive",
-    image: "/covers/radioactivecover.jpg",
+    title: `Tesla ($20)`,
+    description: `An audio recorder, similar to Image-Line's Edison, that costs a quarter of the price and works on every DAW. Made with JUCE.`,
+    href: `https://www.patreon.com/posts/tesla-151193557`,
+    image: `/covers/tesla.png`,
   },
   {
-    title: "SEEZAAG (THE FINAL CUT)",
+    title: `Audinspect`,
     description:
-      "A rework of gZIP's most famous song, SEEZAAG, featuring a better fusion between Uptempo Hardcore and Dubstep and interesting parts.",
-    href: "https://song.link/seezaag-the-final-cut",
-    image: "/covers/tfccover.jpg",
+      `A simple audio inspector, made for quick viewing and listening of audio files. Built with Electron + React and wavesurfer.js, built with GitHub Actions.`,
+    href: `https://github.com/404oops/audinspect`,
+    image: `/covers/audinspect.png`,
   },
   {
-    title: "gZIP",
+    title: `musique+`,
     description:
-      "A 6-track EP featuring a fusion between Hardcore and Dubstep and a Hardbass track. ",
-    href: "https://album.link/gZIP",
-    image: "/covers/gzipcover.jpg",
+      `A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services. Currently defunct, since the services used for link processing are broken. Made with Node.js and Discord.js.`,
+    href: `https://musique.404oops.com`,
+    image: `/covers/mpluslogo.png`,
   },
   {
-    title: "musique+",
+    title: `NamecheapDDNS`,
     description:
-      "A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services.",
-    href: "https://musique.404oops.com",
-    image: "/covers/mpluslogo.png",
+      `A simple program made for managing DDNS (A+) records on your macOS machine, since there aren't other native ones. Only supports macOS Sonoma and above.`,
+    href: `https://github.com/404oops/NamecheapDDNS`,
   },
   {
-    title: "NamecheapDDNS",
+    title: `ALMITWV`,
     description:
-      "A simple program made for managing DDNS (A+) records on your macOS machine, since there aren't other native ones. Only supports macOS Sonoma and above.",
-    href: "https://github.com/404oops/NamecheapDDNS",
-  },
-  {
-    title: "ALMITWV",
-    description:
-      "A program made for giving you information about your computer specifications. Doesn't really go much deeper than that. Useful for a quick specification list",
-    href: "https://github.com/404oops/ALMITWV",
+      `A program made for giving you information about your computer specifications. Doesn't really go much deeper than that. Useful for a quick specification list. Means "A little more info than winver". Made with C# and WinForms.`,
+    href: `https://github.com/404oops/ALMITWV`,
   },
 ];
 

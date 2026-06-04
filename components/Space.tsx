@@ -33,7 +33,7 @@ export default function SpaceGradient() {
         speed: Math.random() * 0.3 + 0.05,
       }));
 
-    let stars = createStars();
+    const stars = createStars();
 
     let animationFrameId = 0;
 

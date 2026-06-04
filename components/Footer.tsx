@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faXTwitter,
-  faSoundcloud,
-  faBandcamp,
   faPatreon,
   faWordpress,
 } from "@fortawesome/free-brands-svg-icons";
@@ -31,21 +29,9 @@ const socialLinks: SocialLink[] = [
     newTab: true,
   },
   {
-    icon: faBandcamp,
-    href: "https://404oops.bandcamp.com/",
-    label: "Bandcamp",
-    newTab: true,
-  },
-  {
     icon: faXTwitter,
     href: "https://twitter.com/oops4041555",
     label: "X",
-    newTab: true,
-  },
-  {
-    icon: faSoundcloud,
-    href: "https://soundcloud.com/404oops",
-    label: "SoundCloud",
     newTab: true,
   },
   {
