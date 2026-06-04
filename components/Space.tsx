@@ -19,21 +19,49 @@ export default function SpaceGradient() {
       targetY: window.innerHeight / 2,
     };
 
-    const stars = Array.from({ length: 120 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      baseX: Math.random() * window.innerWidth,
-      baseY: Math.random() * window.innerHeight,
-      size: Math.random() * 1.8 + 0.6,
-      opacity: Math.random() * 0.45 + 0.12,
-      speed: Math.random() * 0.3 + 0.05,
-    }));
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+
+    const createStars = () =>
+      Array.from({ length: 120 }, () => ({
+        x: Math.random() * viewportWidth,
+        y: Math.random() * viewportHeight,
+        baseX: Math.random() * viewportWidth,
+        baseY: Math.random() * viewportHeight,
+        size: Math.random() * 1.8 + 0.6,
+        opacity: Math.random() * 0.45 + 0.12,
+        speed: Math.random() * 0.3 + 0.05,
+      }));
+
+    let stars = createStars();
 
     let animationFrameId = 0;
 
     const resizeCanvas = () => {
+      const nextWidth = window.innerWidth;
+      const nextHeight = window.innerHeight;
+      const widthScale = nextWidth / viewportWidth;
+      const heightScale = nextHeight / viewportHeight;
+
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+
+      stars.forEach((star) => {
+        star.x *= widthScale;
+        star.y *= heightScale;
+        star.baseX *= widthScale;
+        star.baseY *= heightScale;
+      });
+
+      state.x *= widthScale;
+      state.y *= heightScale;
+      state.targetX *= widthScale;
+      state.targetY *= heightScale;
+
+      viewportWidth = nextWidth;
+      viewportHeight = nextHeight;
+
+      render();
     };
 
     const render = () => {
