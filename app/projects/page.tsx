@@ -12,19 +12,16 @@ const projects = [
     title: `ESPWR`,
     description: `An ecosystem made with an ESP32 that can remotely power your computer on and off, and also features a web interface and watchdog software can automatically power cycle your computer if it becomes unresponsive. Made in C and Bootstrap 2`,
     href: `https://github.com/404oops/ESPWR`,
-    newTab: true,
   },
   {
     title: `RPiRCM`,
     description: `A tool for booting hekate on Nintendo Switches from Raspberry Pi devices. Made with GitHub Actions and rpi-image-gen.`,
     href: `https://github.com/404oops/RPiRCM`,
-    newTab: true,
   },
   {
     title: `virt-manager-web`,
     description: `A dockerized web interface for managing virtual machines, made from a base GUI template. Useful for managing VMs on headless servers. Built with GitHub Actions and jlesage/baseimage-gui`,
     href: `https://github.com/404oops/virt-manager-web`,
-    newTab: true,
   },
   {
     title: `Tesla ($10)`,
