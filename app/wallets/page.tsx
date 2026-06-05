@@ -40,7 +40,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="min-h-screen flex items-center max-w-xl">
+    <div className="min-h-screen flex items-center max-w-xl mb-10">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-4xl font-bold">My Crypto Wallets</h1>
         <h3 className="text-xl font-bold mb-4 underline">
