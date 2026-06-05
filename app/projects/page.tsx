@@ -9,6 +9,13 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    title: `musique+`,
+    description:
+      `A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services. Currently defunct, since the services used for link processing are broken. Made with Node.js and Discord.js.`,
+    href: `https://github.com/404oops/musiqueplus`,
+    image: `/covers/mpluslogo.png`,
+  },
+  {
     title: `ESPWR`,
     description: `An ecosystem made with an ESP32 that can remotely power your computer on and off, and also features a web interface and watchdog software can automatically power cycle your computer if it becomes unresponsive. Made in C and Bootstrap 2`,
     href: `https://github.com/404oops/ESPWR`,
@@ -35,13 +42,6 @@ const projects = [
       `A simple audio inspector, made for quick viewing and listening of audio files. Built with Electron + React and wavesurfer.js, built with GitHub Actions.`,
     href: `https://github.com/404oops/audinspect`,
     image: `/covers/audinspect.png`,
-  },
-  {
-    title: `musique+`,
-    description:
-      `A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services. Currently defunct, since the services used for link processing are broken. Made with Node.js and Discord.js.`,
-    href: `https://musique.404oops.com`,
-    image: `/covers/mpluslogo.png`,
   },
   {
     title: `NamecheapDDNS`,
