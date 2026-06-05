@@ -27,7 +27,7 @@ const projects = [
     newTab: true,
   },
   {
-    title: `Tesla ($20)`,
+    title: `Tesla ($10)`,
     description: `An audio recorder, similar to Image-Line's Edison, that costs a quarter of the price and works on every DAW. Made with JUCE.`,
     href: `https://www.patreon.com/posts/tesla-151193557`,
     image: `/covers/tesla.png`,
