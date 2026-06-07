@@ -11,7 +11,7 @@ const projects = [
   {
     title: `musique+`,
     description:
-      `A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services. Currently defunct, since the services used for link processing are broken. Made with Node.js and Discord.js.`,
+      `A Discord bot made for Music links and processing them. When you send a link, it shows previews and links to other streaming services. Currently defunct, since the services used for link processing are broken. Made with Bun and Discord.js.`,
     href: `https://github.com/404oops/musiqueplus`,
     image: `/covers/mpluslogo.png`,
   },
